@@ -1,5 +1,18 @@
 spring:
+  application:
+    name: microservico-01
+
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    password: 123456
+    username: root
+    url: jdbc:mysql://localhost:3306/ferias
+    driver-class-name: com.mysql.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5Dialect

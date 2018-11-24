@@ -1,6 +1,6 @@
 # Spring Eureka Server Discovery
 
-## Tecnolog:
+## Tecnologies:
 
 + Gradle
 + Kotlin
