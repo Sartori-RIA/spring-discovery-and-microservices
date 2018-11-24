@@ -8,11 +8,12 @@ import java.util.*
 
 @Component
 interface UserService {
-    fun findById(id: String): Optional<User>?
 
-    fun delete(id: String)
+    fun findById(id: Long): Optional<User>?
 
-    fun save(model: User): User
+    fun delete(id: Long)
 
-    fun findAll(pageable: Pageable?): Page<User>
+    fun save(user: User): User
+
+    fun findAll(pageable: Pageable?): Iterable<User>
 }
