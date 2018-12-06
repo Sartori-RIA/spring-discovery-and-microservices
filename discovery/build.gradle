@@ -48,6 +48,7 @@ dependencies {
     implementation 'javax.xml.bind:jaxb-api:2.3.0'
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-devtools')
 }
 
 dependencyManagement {

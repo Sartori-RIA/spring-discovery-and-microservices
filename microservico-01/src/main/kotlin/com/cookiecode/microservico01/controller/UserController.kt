@@ -4,19 +4,18 @@ import com.cookiecode.microservico01.domain.User
 import com.cookiecode.microservico01.response.Response
 import com.cookiecode.microservico01.structure.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.MessageSource
 import org.springframework.dao.DuplicateKeyException
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Component
 import org.springframework.validation.BindingResult
 import org.springframework.validation.ObjectError
 import org.springframework.web.bind.annotation.*
 import java.util.*
 import javax.servlet.http.HttpServletRequest
 
-@RestController
 @RequestMapping("/api/users")
+@Component
 class UserController {
 
     @Autowired
@@ -28,7 +27,7 @@ class UserController {
         try {
             validateCreateUser(user, result)
             takeIf { result.hasErrors() }?.apply {
-                result.allErrors.forEach {  response.errors.add(it.defaultMessage!!) }
+                result.allErrors.forEach { response.errors.add(it.defaultMessage!!) }
                 return ResponseEntity.badRequest().body(response)
             }
             response.data = userService.save(user)
@@ -100,7 +99,7 @@ class UserController {
     }
 
     private fun validateUpdateUser(user: User, result: BindingResult) {
-        takeIf { user.id != 0L}?.apply { result.addError(ObjectError("User", "user id cannot be empty")) }
+        takeIf { user.id != 0L }?.apply { result.addError(ObjectError("User", "user id cannot be empty")) }
         takeIf { user.name.isBlank() }?.apply { result.addError(ObjectError("User", "user name cannot be empty")) }
     }
 }

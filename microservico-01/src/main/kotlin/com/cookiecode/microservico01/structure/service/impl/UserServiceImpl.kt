@@ -16,9 +16,13 @@ class UserServiceImpl : UserService {
 
     override fun save(user: User): User = userRepository.save(user)
 
-    override fun findById(id: Long): Optional<User>? = userRepository.findById(id)
+    override fun save(users: Iterable<User>): Iterable<User> = userRepository.saveAll(users)
+
+    override fun delete(user: User) = userRepository.delete(user)
 
     override fun delete(id: Long) = userRepository.deleteById(id)
+
+    override fun findById(id: Long): Optional<User>? = userRepository.findById(id)
 
     override fun findAll(pageable: Pageable?): Iterable<User> {
         return if (pageable != null)

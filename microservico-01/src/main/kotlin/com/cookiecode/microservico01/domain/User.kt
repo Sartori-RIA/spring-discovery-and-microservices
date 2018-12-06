@@ -9,11 +9,8 @@ import javax.validation.constraints.NotNull
 
 @Table(name = "users")
 @Entity
-class User : AbstractEntity() {
-
-    @NotEmpty
-    @NotNull
-    @NotBlank
-    @Column(name = "name")
-    var name: String = ""
-}
+data class User(@NotEmpty
+                @NotNull
+                @NotBlank
+                @Column(name = "name")
+                var name: String = "") : AbstractEntity()
